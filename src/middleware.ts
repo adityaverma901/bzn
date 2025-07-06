@@ -30,12 +30,22 @@ export default auth(async (req) => {
   }
 
   // Handle auth routes (login, register, etc.)
+  // if (isAuthRoute) {
+  //   if (isLoggedIn) {
+  //     return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+  //   }
+  //   return undefined;
+  // }
   if (isAuthRoute) {
-    if (isLoggedIn) {
-      return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    }
-    return undefined;
+  if (isLoggedIn) {
+    const callbackUrl = nextUrl.searchParams.get("callbackUrl");
+    const redirectUrl = callbackUrl 
+      ? new URL(callbackUrl, nextUrl) 
+      : new URL(DEFAULT_LOGIN_REDIRECT, nextUrl);
+    return NextResponse.redirect(redirectUrl);
   }
+  return undefined;
+}
 
   // Allow public routes and APIs to pass through
   if (isPublicRoute || isPublicApi) {

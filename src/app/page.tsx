@@ -262,6 +262,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
+import Navbar from '@/components/navbar';
 
 const ShirtLandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -274,9 +275,9 @@ const ShirtLandingPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-stone-50 font-serif">
+    <div className="min-h-screen bg-secondary font-serif">
       {/* Minimal Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-stone-50/95 backdrop-blur-sm' : 'bg-transparent'}`}>
+      {/* <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-primary-50/95 backdrop-blur-sm' : 'bg-transparent'}`}>
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="text-2xl font-light text-stone-800 tracking-wide">
@@ -302,7 +303,7 @@ const ShirtLandingPage = () => {
         
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-stone-50 border-t border-stone-200">
+          <div className="md:hidden bg-primary-50 border-t border-stone-200">
             <div className="px-6 py-4 space-y-4">
               {['Shop', 'About', 'Contact'].map((item) => (
                 <button key={item} className="block text-stone-700 font-light">
@@ -311,8 +312,9 @@ const ShirtLandingPage = () => {
               ))}
             </div>
           </div>
-        )}np
-      </nav>
+        )}
+      {/* </nav> */} 
+      <Navbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 lg:px-8">
@@ -320,14 +322,15 @@ const ShirtLandingPage = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8">
-              <div className="text-xs uppercase tracking-widest text-stone-500 font-sans">
+              <div className="text-xs uppercase tracking-widest text-stone-800 font-sans">
                 Handcrafted Excellence
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-light text-stone-900 leading-tight">
+              <h1 className="text-5xl lg:text-7xl font-montserrat text-stone-900 leading-tight">
                 Plain shirts,
                 <br />
-                <em>extraordinary</em>
+                {/* <em className='font-great-vibes'>extraordinary</em> */}
+                <span className='font-great-vibes'>extraordinary</span>
                 <br />
                 embroidery
               </h1>
@@ -337,7 +340,7 @@ const ShirtLandingPage = () => {
               </p>
               
               <div className="pt-4">
-                <button className="group inline-flex items-center bg-stone-900 text-stone-50 px-8 py-4 font-light tracking-wide hover:bg-stone-800 transition-colors duration-200">
+                <button className="group inline-flex items-center bg-primary-900 text-stone-50 px-8 py-4 font-light tracking-wide hover:bg-primary-800 transition-colors duration-200">
                   Explore Collection
                   <ArrowRight className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -346,20 +349,15 @@ const ShirtLandingPage = () => {
 
             {/* Right Content - Product Image */}
             <div className="relative">
-              <div className="aspect-[4/5] bg-stone-100 rounded-sm overflow-hidden">
+              <div className="aspect-[4/5] bg-primary-100 rounded-sm overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-b from-stone-200 to-stone-100 flex items-center justify-center">
-                  {/* Minimal Shirt Illustration */}
-                  <div className="w-48 h-64 bg-stone-50 shadow-sm relative">
-                    <div className="absolute inset-8 bg-white shadow-inner rounded-sm"></div>
-                    <div className="absolute top-12 left-12 right-12 h-px bg-stone-300"></div>
-                    <div className="absolute top-16 left-16 right-16 h-px bg-stone-200"></div>
-                    <div className="absolute bottom-16 left-12 w-6 h-6 bg-stone-300 rounded-full"></div>
-                  </div>
-                </div>
+                  {/* Mnimal Shirt Illustration */}
+                      <img src="./demo.png" alt="" />
+                </div>  
               </div>
               
               {/* Price Tag */}
-              <div className="absolute -bottom-4 -left-4 bg-stone-900 text-stone-50 px-6 py-3">
+              <div className="absolute -bottom-4 -left-4 bg-primary-900 text-stone-50 px-6 py-3">
                 <div className="text-sm font-light">From ₹1,299</div>
               </div>
             </div>
@@ -368,7 +366,7 @@ const ShirtLandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-stone-100/50">
+      <section className="py-20 bg-primary-100/50">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-light text-stone-900 mb-4">
@@ -381,19 +379,25 @@ const ShirtLandingPage = () => {
 
           <div className="grid md:grid-cols-3 gap-12">
             <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-stone-200 rounded-full mx-auto mb-6"></div>
+              <div className=" pl-16 bg-primary-200 rounded-full mx-auto mb-6">
+                <img src="./first.png" alt="" height={200} width={200} />
+              </div>
               <h3 className="text-xl font-light text-stone-900">Hand Embroidered</h3>
               <p className="text-stone-600 font-light">Each detail carefully stitched by skilled artisans</p>
             </div>
             
             <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-stone-200 rounded-full mx-auto mb-6"></div>
+              <div className=" pl-16 bg-primary-200 rounded-full mx-auto mb-6">
+                 <img src="./second.png" alt="" height={200} width={200} />
+              </div>
               <h3 className="text-xl font-light text-stone-900">Premium Cotton</h3>
               <p className="text-stone-600 font-light">Sourced from the finest cotton for ultimate comfort</p>
             </div>
             
             <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-stone-200 rounded-full mx-auto mb-6"></div>
+              <div className="pl-16 bg-primary-200 rounded-full mx-auto mb-6">
+                 <img src="./third.png" alt="" height={200} width={200} />
+              </div>
               <h3 className="text-xl font-light text-stone-900">Timeless Design</h3>
               <p className="text-stone-600 font-light">Classic pieces that transcend seasonal trends</p>
             </div>
@@ -413,7 +417,7 @@ const ShirtLandingPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((item) => (
               <div key={item} className="group cursor-pointer">
-                <div className="aspect-[4/5] bg-stone-100 mb-4 overflow-hidden">
+                <div className="aspect-[4/5] bg-primary-100 mb-4 overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-b from-stone-200 to-stone-100 group-hover:scale-105 transition-transform duration-500"></div>
                 </div>
                 <div className="space-y-2">
@@ -427,7 +431,7 @@ const ShirtLandingPage = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-stone-900 text-stone-50">
+      <section className="py-20 bg-primary-900 text-stone-50">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-light mb-6">
             Stay connected
@@ -443,7 +447,7 @@ const ShirtLandingPage = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 bg-transparent border border-stone-600 text-stone-50 placeholder-stone-400 font-light focus:outline-none focus:border-stone-400"
               />
-              <button className="px-6 py-3 bg-stone-50 text-stone-900 font-light hover:bg-stone-200 transition-colors">
+              <button className="px-6 py-3 bg-primary-50 text-stone-900 font-light hover:bg-primary-200 transition-colors">
                 Subscribe
               </button>
             </div>
@@ -452,7 +456,7 @@ const ShirtLandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-stone-100">
+      <footer className="py-12 bg-primary-100">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-2xl font-light text-stone-800 tracking-wide mb-4 md:mb-0">

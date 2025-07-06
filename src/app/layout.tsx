@@ -4,8 +4,32 @@ import "./globals.css";
 import { auth } from "@/auth";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+// import { Great_Vibes } from "next/font/google";
+import { Amita, Montserrat ,Gilda_Display } from "next/font/google"; // ✅ import Google font
+import "./globals.css";
+import { Great_Vibes } from "next/font/google";
 
-
+const greatVibes = Great_Vibes({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-great-vibes",
+});
+const gilda = Gilda_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-gilda',
+});
+// Load Amita font
+const amita = Amita({
+  weight: ["400", "700"],
+  subsets: ["devanagari", "latin"],
+  variable: "--font-amita",
+});
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
 export const metadata: Metadata = {
 
 
@@ -46,8 +70,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <link rel="icon" href="/icons-512.png" />
           <link rel="apple-touch-icon" href="/icons-512.png" />
         </head>
-        <body>
+        <body className={`${montserrat.variable} ${gilda.variable} ${greatVibes.variable} ${amita.variable} antialiased`}>
           {children}
+          <Toaster />
         </body>
       </html>
     </SessionProvider>

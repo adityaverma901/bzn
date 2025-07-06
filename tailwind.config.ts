@@ -145,7 +145,7 @@ const config: Config = withUt({
           hover: '#B57121',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: '#FFF2EB',
           foreground: 'hsl(var(--secondary-foreground))'
         },
         footerBackground: '#161C28',

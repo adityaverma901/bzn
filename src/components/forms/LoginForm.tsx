@@ -1,7 +1,6 @@
 "use client";
 
 import { loginUser } from "@/actions/auth/";
-
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import {
   Form,
@@ -16,7 +15,6 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Building2, TicketIcon, ArrowLeft } from "lucide-react";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 
@@ -62,189 +60,152 @@ function LoginForm({ api }: any) {
   }
 
   return (
-    <div className="min-h-screen w-full bg-white md:bg-gradient-to-br md:from-blue-50 md:to-gray-50 flex flex-col md:items-center md:justify-center px-4 sm:px-6 lg:px-8">
-      {/* Mobile Header */}
-      <div className="md:hidden pt-16 pb-8 px-2">
-
-      </div>
-
-      {/* Desktop and Mobile Container */}
-      <div className="relative w-full max-w-md bg-white md:rounded-xl md:shadow-lg md:p-8 md:sm:p-10 md:border md:border-gray-100 flex-1 md:flex-none flex flex-col md:block">
-
-        {/* Desktop Logo - Hidden on mobile */}
-        <Link href={"/"} className="hidden md:block">
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center">
-              <div className="h-10 w-10 rounded-md flex items-center justify-center">
-                {/* <TicketIcon className="h-5 w-5 text-white" /> */}
-                <img src="/icons.png" alt="" className="h-10 w-10" />
-              </div>
-              <span className="ml-2 text-2xl  font-bold text-primary">Tms</span>
-            </div>
+    <div className="min-h-screen w-full bg-secondary flex">
+      <div className="flex w-full">
+        {/* Left Image Section - Hidden on mobile */}
+        <div className="hidden lg:flex lg:w-1/2 pl-10 items-center justify-center bg-secondary">
+          <div className="text-center">
+            {/* Placeholder for image */}
+            
+            <div className="w-[500px] h-[500px] pl-6 rounded-lg"><img src="/login-img.png" alt="" /></div>
           </div>
-        </Link>
-        <div className="md:hidden pl-4 flex"> 
-          {/* <TicketIcon size={50} className="text-primary pb-1 font-bold bold " /> */}
-          <img src="/icons.png" className="w-10 h-10" alt="" />
-          <span className="text-4xl font-bold pl-0 text-primary"> TMS</span></div>
-        {/* Title - Different for mobile and desktop */}
-        <h1 className="text-2xl font-bold text-primary mb-2 md:mb-6 text-left md:text-center px-6 md:px-0 md:pt-0">
-          <span className="md:hidden">Let's Sign you in.</span>
-          <span className="hidden md:inline">Welcome back</span>
-        </h1>
-
-        {/* Mobile subtitles */}
-
-        <div className="md:hidden px-6 mb-8">
-
-
-          <p className="text-primary text-base mb-1">Welcome back</p>
-          {/* <p className="text-primary text-base">You've been missed!</p> */}
         </div>
 
-        <div className="px-6 md:px-0 flex-1 md:flex-none">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 md:space-y-5">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <label className="block text-sm font-medium text-primary mb-1 md:mb-1 mb-2">
-                      <span className="md:hidden">Username or Email</span>
-                      <span className="hidden md:inline">Email</span>
-                    </label>
-                    <FormControl>
-                      <input
-                        {...field}
-                        type="email"
-                        placeholder="Enter Username or Email"
-                        className="w-full p-3 md:p-3 p-4 bg-gray-50 md:bg-gray-50 bg-white border border-gray-200 rounded-lg md:rounded-lg rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800 md:focus:ring-blue-800 focus:border-transparent"
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    <FormMessage className="text-red-500 text-xs md:text-xs text-sm mt-1" />
-                  </FormItem>
-                )}
-              />
+        {/* Right Form Section */}
+        <div className="flex items-center justify-center bg-secondary ">
+          <div className="w-full max-w-md ">
+            {/* Mobile Logo - Only visible on mobile */}
+            <div className="lg:hidden text-center mb-8">
+              {/* Placeholder for logo */}
+              <div className="w-[60px] h-[60px] bg-gray-200 rounded-lg mx-auto mb-2"></div>
+              <span className="text-2xl font-bold text-secondary">S|क</span>
+            </div>
 
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <label className="block text-sm font-medium text-primary mb-1 md:mb-1 mb-2">
-                      Password
-                    </label>
-                    <div className="relative">
+            {/* Form Title */}
+            <div className="mb-8">
+              <h1 className="text-2xl font-gilda lg:text-3xl font-semibold text-gray-900">
+                Sign In
+              </h1>
+              <p className="text-gray-600 mt-2">
+                Please enter your credentials
+              </p>
+            </div>
+
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                {error && <FormError message={error} />}
+                {success && <FormSuccess message={success} />}
+
+                {/* Email Field */}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label className="block text-sm font-montserrat font-medium  mb-2">
+                        Email Address
+                      </label>
                       <FormControl>
                         <input
                           {...field}
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Enter Password"
-                          className="w-full p-3 md:p-3 p-4 bg-gray-50 md:bg-gray-50 bg-white border border-gray-200 rounded-lg md:rounded-lg rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-800 md:focus:ring-blue-800 focus:ring-blue-500 focus:border-transparent pr-12 md:pr-10"
+                          type="email"
+                          placeholder="Enter your email"
+                          className="w-96 p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent pr-10"
                           disabled={isPending}
                         />
                       </FormControl>
-                      <button
-                        type="button"
-                        onClick={togglePasswordVisibility}
-                        className="absolute right-3 md:right-3 right-4 top-1/2 -translate-y-1/2 text-gray-500 md:text-gray-500 text-gray-400 hover:text-primary md:hover:text-primary hover:text-gray-600"
-                      >
-                        {showPassword ? <IoEyeOff size={20} /> : <IoEye size={20} />}
-                      </button>
-                    </div>
-                    <FormMessage className="text-red-500 text-xs md:text-xs text-sm mt-1" />
-                  </FormItem>
-                )}
-              />
+                      <FormMessage className="text-red-500 text-xs mt-1" />
+                    </FormItem>
+                  )}
+                />
 
-              {/* Desktop Remember me and Forgot password - Hidden on mobile */}
-              <div className="hidden md:flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-4 w-4 text-primary focus:ring-blue-800 border-gray-300 rounded"
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-700"
+                {/* Password Field */}
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label className="block text-sm font-montserrat font-medium text-gray-700 mb-2">
+                        Password
+                      </label>
+                      <div className="relative">
+                        <FormControl>
+                          <input
+                            {...field}
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            className="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent pr-10"
+                            disabled={isPending}
+                          />
+                        </FormControl>
+                        <button
+                          type="button"
+                          onClick={togglePasswordVisibility}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                          disabled={isPending}
+                        >
+                          {showPassword ? <IoEyeOff size={18} /> : <IoEye size={18} />}
+                        </button>
+                      </div>
+                      <FormMessage className="text-red-500 text-xs mt-1" />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Remember Me & Forgot Password */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <input
+                      id="remember-me"
+                      name="remember-me"
+                      type="checkbox"
+                      className="h-4 w-4 text-secondary focus:ring-secondary border-gray-300 rounded"
+                    />
+                    <label
+                      htmlFor="remember-me"
+                      className="ml-2 text-sm font-montserrat text-gray-600 cursor-pointer"
+                    >
+                      Remember me
+                    </label>
+                  </div>
+
+                  <Link
+                    href="/forgot-password"
+                    className="text-sm text-secondary font-montserrat hover:text-secondary/80"
                   >
-                    Remember me
-                  </label>
+                    Forgot password?
+                  </Link>
                 </div>
 
-                <Link
-                  href="/auth/forgot-password"
-                  className="text-sm text-primary hover:underline"
+                {/* Login Button */}
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full py-3 bg-[#563612] font-gilda hover:bg-[#3e280e] text-white font-medium font-montserrat rounded-lg hover:bg-secondary/90 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
-                  Forgot password?
-                </Link>
-              </div>
+                  {isPending ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Signing in...
+                    </>
+                  ) : (
+                    'Sign In'
+                  )}
+                </button>
+              </form>
+            </Form>
 
-              {/* Mobile divider */}
-              <div className="md:hidden my-8">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-200"></div>
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-white text-gray-400">or</span>
-                  </div>
-                </div>
-              </div>
-
-              {error && <FormError message={error} />}
-              {success && <FormSuccess message={success} />}
-
-              {/* Mobile Register link - Above button */}
-              <div className="md:hidden text-center mb-6">
-                <span className="text-gray-500">Don't have an account? </span>
-                <Link
-                  href="/auth/register"
-                  className="text-primary font-medium hover:underline"
-                >
-                  Register
-                </Link>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isPending}
-                className="w-full py-3 md:py-3 py-4 bg-blue-800 md:bg-blue-800 bg-black text-white font-medium rounded-lg md:rounded-lg rounded-xl hover:bg-blue-900 md:hover:bg-blue-900  transition-colors disabled:opacity-60 flex items-center justify-center"
-              >
-                {isPending ? (
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                ) : null}
-                {isPending ? "Logging in..." : "Login"}
-              </button>
-            </form>
-          </Form>
-
-          {/* Desktop Register section - Hidden on mobile */}
-          <div className="hidden md:block mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  Don't have an account?
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-6">
+            {/* Sign Up Link */}
+            <div className="mt-6 text-center">
+              <span className="text-gray-600 font-montserrat">Don't have an account? </span>
               <Link
                 href="/auth/register"
-                className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-800"
+                className="font-medium hover:text-secondary/80"
               >
-                Create new account
+                Sign Up
               </Link>
             </div>
           </div>

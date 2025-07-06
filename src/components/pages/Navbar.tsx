@@ -68,7 +68,7 @@ const Navigation = () => {
 
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-                    <Link href="/dashboard">
+                    <Link href="/dashboard/user">
                       <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-primary-light">
                         Dashboard
                       </button>

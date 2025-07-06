@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'TMS',
     short_name: 'TMS',
     description: 'A Progressive Web App built with Next.js',
-    start_url: '/dashboard',
+    // start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#000000',
