@@ -724,6 +724,7 @@ export default function CircularGallery({
     });
     return () => {
       app.destroy();
+      //merge
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
   return (
